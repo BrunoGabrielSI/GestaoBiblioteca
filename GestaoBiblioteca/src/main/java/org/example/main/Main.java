@@ -5,7 +5,9 @@ import org.example.biblioteca.Biblioteca;
 import org.example.model.Livro;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args){
@@ -19,7 +21,7 @@ public class Main {
         Livro livro4 = new Livro("O Pequeno Príncipe", "Antoine de Saint-Exupéry", 1943);
         Livro livro5 = new Livro("Harry Potter e a Pedra Filosofal", "J. K. Rowling", 1997);
 
-        // Livros adicionads na biblioteca
+
         biblioteca.adicionarLivro(livro1);
         biblioteca.adicionarLivro(livro2);
         biblioteca.adicionarLivro(livro3);
@@ -27,7 +29,6 @@ public class Main {
         biblioteca.adicionarLivro(livro5);
 
 
-        // Pesquisa por titulo
         String tituloForncecido = scanner.nextLine();
         List<Livro> resultadoTitulo = biblioteca.buscarLivroPorTitulo(tituloForncecido);
 
@@ -36,11 +37,34 @@ public class Main {
                         livro.getTitulo(), livro.getAutor(), livro.getAnoPublicacao())));
 
 
-        // Listagem de livros por ano de publicação
+
         List<Livro> resultadoAno = biblioteca.listarLivrosPorAno();
 
         resultadoAno.forEach(livro ->
                 System.out.println(String.format("Titulo: \"%s\", Autor: \"%s\", Ano de publicação: \"%d\"",
                         livro.getTitulo(), livro.getAutor(), livro.getAnoPublicacao())));
+
+
+
+        Map<String, Integer> contagemLivrosPorAutor = biblioteca.contarLivrosPorAutor();
+        contagemLivrosPorAutor.forEach(
+                (autor, contagem) ->
+                        System.out.println("Autor: " + autor + " | N° de livros: " + contagem));
+
+
+        Set<Livro> livrosUnicos = biblioteca.listarLivrosUnicos();
+        livrosUnicos.forEach(livro ->
+                System.out.println(String.format("Titulo: \"%s\", Autor: \"%s\", Ano de publicação: \"%d\"",
+                        livro.getTitulo(), livro.getAutor(), livro.getAnoPublicacao())));
+
+
+        System.out.print("\nDigite um ano para listar os livros publicados antes dele: ");
+        int anoInformado = scanner.nextInt();
+
+        biblioteca.listarLivrosAntesDe(anoInformado)
+                .forEach(livro -> System.out.println(
+                        String.format("Título: \"%s\", Autor: \"%s\", Ano de publicação: \"%d\"",
+                                livro.getTitulo(), livro.getAutor(), livro.getAnoPublicacao())));
+
     }
 }
