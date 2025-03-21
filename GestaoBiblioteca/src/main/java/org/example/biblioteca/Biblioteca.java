@@ -42,7 +42,7 @@ public class Biblioteca {
 
     public List<Livro> listarLivrosAntesDe(int ano) {
         return livros.stream()
-                .filter(livro -> livro.getAnoPublicacao() < ano) // Filtra os livros publicados antes do ano informado
-                .collect(Collectors.toList()); // Converte o resultado para uma lista
+                .filter(livro -> livro.getAnoPublicacao() < ano)
+                .collect(Collectors.toList());
     }
 }
