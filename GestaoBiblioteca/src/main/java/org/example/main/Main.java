@@ -29,12 +29,18 @@ public class Main {
 
         // Pesquisa por titulo
         String tituloForncecido = scanner.nextLine();
-        List<Livro> resultado = biblioteca.buscarLivroPorTitulo(tituloForncecido);
+        List<Livro> resultadoTitulo = biblioteca.buscarLivroPorTitulo(tituloForncecido);
 
-        resultado.forEach(livro ->
+        resultadoTitulo.forEach(livro ->
                 System.out.println(String.format("Titulo: \"%s\", Autor: \"%s\", Ano de publicação: \"%d\"",
                         livro.getTitulo(), livro.getAutor(), livro.getAnoPublicacao())));
 
 
+        // Listagem de livros por ano de publicação
+        List<Livro> resultadoAno = biblioteca.listarLivrosPorAno();
+
+        resultadoAno.forEach(livro ->
+                System.out.println(String.format("Titulo: \"%s\", Autor: \"%s\", Ano de publicação: \"%d\"",
+                        livro.getTitulo(), livro.getAutor(), livro.getAnoPublicacao())));
     }
 }
