@@ -5,6 +5,7 @@ import org.example.biblioteca.Biblioteca;
 import org.example.model.Livro;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -42,5 +43,13 @@ public class Main {
         resultadoAno.forEach(livro ->
                 System.out.println(String.format("Titulo: \"%s\", Autor: \"%s\", Ano de publicação: \"%d\"",
                         livro.getTitulo(), livro.getAutor(), livro.getAnoPublicacao())));
+
+
+        // Contagem de livros por autor
+        Map<String, Integer> contagemLivrosPorAutor = biblioteca.contarLivrosPorAutor();
+        contagemLivrosPorAutor.forEach(
+                (autor, contagem) ->
+                        System.out.println("Autor: " + autor + " | N° de livros: " + contagem));
+
     }
 }
