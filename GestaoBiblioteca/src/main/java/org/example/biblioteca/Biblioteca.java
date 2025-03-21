@@ -5,11 +5,6 @@ import org.example.model.Livro;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class Biblioteca {
 
     private List<Livro> livros = new ArrayList<>();
@@ -39,5 +34,9 @@ public class Biblioteca {
                             0)+1);
         }
         return contagemPorAutor;
+    }
+
+    public Set<Livro> listarLivrosUnicos(){
+        return new HashSet<>(livros);
     }
 }
