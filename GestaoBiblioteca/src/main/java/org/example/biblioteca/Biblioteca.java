@@ -39,4 +39,10 @@ public class Biblioteca {
     public Set<Livro> listarLivrosUnicos(){
         return new HashSet<>(livros);
     }
+
+    public List<Livro> listarLivrosAntesDe(int ano) {
+        return livros.stream()
+                .filter(livro -> livro.getAnoPublicacao() < ano) // Filtra os livros publicados antes do ano informado
+                .collect(Collectors.toList()); // Converte o resultado para uma lista
+    }
 }
